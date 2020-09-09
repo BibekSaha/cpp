@@ -15,27 +15,37 @@ class Distance {
       feet(feet), inches(inches) {}
 
     void showDistance() {
-      cout << "Feet: " << this->feet << endl;
-      cout << "Inches: " << this->inches << endl;
+      cout << "Feet: " << feet << endl;
+      cout << "Inches: " << inches << endl;
     }
 
-    Distance addDistance(Distance) const;
+    void addDistance(Distance, Distance);
 };
 
-Distance Distance::addDistance(Distance d) const {
-  Distance dist;
-  dist.inches = this->inches + d.inches;
-  dist.feet = 0;
-  if (dist.inches >= 12.0) { dist.feet++; dist.inches -= 12.0; }
-  dist.feet += this->feet + d.feet;
-  return dist;
+void Distance::addDistance(Distance d1, Distance d2) {
+  inches = d1.inches + d2.inches;
+  feet = 0;
+  if (inches >= 12.0) { feet++; inches -= 12.0; }
+  feet += d1.feet + d2.feet;
 }
 
 int main(void) {
-  Distance d1(1, 1.25), d2(5, 3.675);
-  Distance d3 = d1.addDistance(d2);
+  Distance d1, d2(1, 1.5F), d3;
+  Distance d4(d2); // default copy constructor
+  Distance d5 = d2; // same default copy constructor
 
+  cout << "Initially d3:-" << endl;
   d3.showDistance();
-  
+  cout << endl;
+
+  d3.addDistance(d1, d2);
+
+  cout << "After adding the distances d3:-" << endl;
+  d3.showDistance();
+
+  cout << "\n######### Default Copy Constructor #########" << endl;
+  d4.showDistance();
+  cout << endl;
+  d5.showDistance();
   return 0;
 }
