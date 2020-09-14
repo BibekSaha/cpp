@@ -23,6 +23,9 @@ class String {
 
     String operator + (String) const;
     bool operator == (String) const;
+    operator char* () {
+      return this->str;
+    }
 };
 
 String String::operator + (String s) const {
@@ -50,6 +53,8 @@ int main(void) {
   s4.display();
 
   cout << (s4 == s3) << endl;
+
+  cout << static_cast<char *>(s1) << endl;
 
   return 0;
 }
