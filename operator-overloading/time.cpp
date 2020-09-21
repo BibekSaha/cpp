@@ -42,6 +42,7 @@ class Time24 {
       cout << this->seconds << endl;
     }
 
+    // converting a Time24 object to a Time12 object
     operator Time12() const;
 };
 

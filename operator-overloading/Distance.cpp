@@ -52,6 +52,7 @@ int main(void) {
 
   Distance d3 = d1 + d2;
 
+  d1.showDistance();
   d3.showDistance();
 
   cout << "d1 is less than d2 " << (d1 < d2) << endl;
