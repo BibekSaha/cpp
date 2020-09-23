@@ -23,9 +23,7 @@ class Counter {
 
 class CounterX : public Counter {
   public:
-    CounterX() { Counter(); }
-
-    CounterX(int c) { Counter(c); }
+    CounterX(int count = 0) : Counter(count) {}
 
     void helloWorld(void) {
       Counter::helloWorld();
@@ -39,8 +37,7 @@ class CounterX : public Counter {
 };
 
 int main(void) {
-  // CounterX count = 10;
-  CounterX count;
+  CounterX count = 10;
   cout << "Counter is " << count.getCount() << endl;
 
   ++count; ++count; ++count;
@@ -55,5 +52,3 @@ int main(void) {
 
   return 0;
 }
-
-// this is the monaco font that is being used right now to code the project
