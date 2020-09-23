@@ -19,7 +19,7 @@ class Employee {
     }
 };
 
-class Manager : public Employee {
+class Manager : private Employee {
   private:
     string title;
     double dues;
@@ -42,7 +42,7 @@ class Manager : public Employee {
     }
 };
 
-class Scientist : public Employee {
+class Scientist : private Employee {
   private:
     unsigned pubs;
   
@@ -69,6 +69,25 @@ class Labourer : public Employee {
     ) : Employee(name, number) {}
 };
 
+class Foreman : private Labourer {
+  private:
+    float quotas;
+
+  public:
+    Foreman(
+      string name,
+      unsigned long number,
+      float quotas
+    ) : Labourer(name, number) {
+      this->quotas = quotas;
+    }
+
+    void printEmployee(void) const {
+      Employee::printEmployee();
+      cout << "Quotas: " << this->quotas << endl;
+    }
+};
+
 int main(void) {
   Manager m1("John Doe", 123456, "Senior Consultant", 100),
     m2("Jane Doe", 678910, "Senior Sales Representative", 123.123);
@@ -77,10 +96,13 @@ int main(void) {
 
   Labourer l("Matthew Hallway", 341234);
 
+  Foreman f("Jon Snow", 1234234, 12.445);
+
   m1.printEmployee(); cout << endl; 
   m2.printEmployee(); cout << endl;
   s1.printEmployee(); cout << endl;
-  l.printEmployee();
+  l.printEmployee(); cout << endl;
+  f.printEmployee();
 
   return 0;
 }
