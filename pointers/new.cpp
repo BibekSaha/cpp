@@ -17,4 +17,4 @@ int main(void) {
   delete[] ptr; // indicates all the members of the array is deleted
 
   return 0;
-} 
+}
