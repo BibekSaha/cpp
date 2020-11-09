@@ -8,6 +8,11 @@ class Base {
       cout << "Base" << endl;
     }
 
+    // virtual destructors is needed in the base class
+    virtual ~Base() {
+      cout << "The object is destroyed" << endl;
+    }
+
     // this makes the class abstract
     virtual void display() = 0; // pure virtual functions
 };
@@ -41,7 +46,7 @@ int main(void) {
   ptr = &dv2;
   ptr->show();
 
+  cout << "***** End of Program *****" << endl;
+
   return 0;
 }
-
-// this is the coding file that was sent by the server

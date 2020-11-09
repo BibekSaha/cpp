@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -7,8 +8,13 @@ class Person {
     string fullName;
 
   public:
+    virtual ~Person() {
+      cout << "The object is destroyed" << endl;
+    }
+
     void setFullName(void) {
       cout << "Enter your full name: ";
+      // getline(cin, this->fullName);
       cin >> this->fullName;
     }
 
@@ -43,7 +49,7 @@ class Professor : public Person {
   public:
     void getData(void) override {
       Person::setFullName();
-      cout << "Enter the number of publications: " << endl;
+      cout << "Enter the number of publications: ";
       cin >> this->numPubs;
     }
 
@@ -66,10 +72,11 @@ int main(void) {
     cin >> choice;
   } while (choice == 'y');
 
-  for (int i = 0; i <= index; i++) {
+  for (int i = 0; i < index; i++) {
     persPtr[i]->printFullName();
     if (persPtr[i]->isOutstanding())
-      cout << "He/She is outstanding!!!" << endl;
+      cout << "He/She is outstanding!!!" << endl << endl;
+    else cout << "He/She is Not outstanding!!! Try harder!" << endl << endl;
   }
 
   return 0;
